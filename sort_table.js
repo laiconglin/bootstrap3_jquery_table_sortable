@@ -1,6 +1,5 @@
 (function ($) {
     $.fn.sort_table = function(options) {
-        console.log(options);
         var cur_table = this;
         init_head_table(options);
         cur_table.parent().append("<div class='copy_sort_table' style='display:none;'></div>");
@@ -44,25 +43,43 @@
                         col_index++;
                     }
                 });
-                console.log(need_sort_col_index);
                 var rows = cur_table.parent().find("div.copy_sort_table table tbody tr");
                 var copy_table = cur_table.parent().find("div.copy_sort_table table");
                 var need_sort_col_vals = [];
                 var rows_map = {};
+                var isAllNum = true;
                 for(var i = 0; i < rows.length; i++) {
                     var cur_row = copy_table.find("tbody tr:eq(" + i + ")");
                     var need_sort_col_td = cur_row.children("td:eq(" + need_sort_col_index + ")");
-                    var key = need_sort_col_td.html() + ":" + i;
+                    var key = need_sort_col_td.html();
+                    if($.isNumeric(key)) {
+                        var trailing_i = (i + 1) / (rows.length + 1);
+                        trailing_i = trailing_i.toString();
+                        trailing_i = trailing_i.substr(2);
+                        if(key.indexOf('.') == -1) {
+                            key = key + '.' + trailing_i;
+                        } else {
+                            key = key + trailing_i; 
+                        }
+                    } else {
+                        key = key + ":" + i;
+                        isAllNum = false;
+                    }
                     need_sort_col_vals.push(key);
                     rows_map[key] = cur_row.clone();
                 }
                 if(cur_status != 'sortable') {
-                    need_sort_col_vals.sort();
+                    if(isAllNum) {
+                       need_sort_col_vals.sort(function(a, b){
+                           return a - b;
+                       }); 
+                    } else {
+                        need_sort_col_vals.sort();
+                    }
                     if(cur_status == 'up') {
                         need_sort_col_vals.reverse();
                     }
                 }
-                console.log(need_sort_col_vals);
                 var cur_tbody = cur_table.find("tbody");
                 cur_tbody.html("");
                 for(var i = 0; i < need_sort_col_vals.length; i++) {
