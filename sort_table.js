@@ -1,9 +1,6 @@
-var obj = null;
-var global_thead = null;
 (function ($) {
     $.fn.sort_table = function(options) {
         console.log(options);
-        obj = this;
         var cur_table = this;
         init_head_table(options);
         cur_table.parent().append("<div class='copy_sort_table' style='display:none;'></div>");
@@ -17,7 +14,6 @@ var global_thead = null;
                     init_header_click($(this));
                 }
             });
-            global_thead = thead;
         }
         function init_header_click(head_th) {
             head_th.children("a.clicksort").click(function(event) {
