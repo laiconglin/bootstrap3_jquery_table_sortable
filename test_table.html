@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="sort_table.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2> table </h2>
+            <table class="table table-bordered sort_table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>Work Hours</th>
+                        <th>Birthday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Asdf</td>
+                        <td>200,000</td>
+                        <td>180</td>
+                        <td>1990-10-01</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Qwer</td>
+                        <td>210,000</td>
+                        <td>190</td>
+                        <td>1989-02-28</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Tyui</td>
+                        <td>180,000</td>
+                        <td>100</td>
+                        <td>1994-01-10</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Ghjk</td>
+                        <td>300,000</td>
+                        <td>200</td>
+                        <td>1978-05-24</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Zxcv</td>
+                        <td>240,000</td>
+                        <td>197</td>
+                        <td>1988-03-21</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Bnm</td>
+                        <td>269,000</td>
+                        <td>160</td>
+                        <td>1986-01-09</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+    // jQuery methods go here...
+    $("table.sort_table").sort_table({
+        "name" : "sort"
+    });
+});
+</script>
+</body>
+</html>
